@@ -2,7 +2,6 @@ import requests
 import json
 from datetime import datetime
 
-# API endpoint
 url = "https://api.open-meteo.com/v1/forecast?latitude=37.5&longitude=-122.0&current_weather=true"
 
 STATE_FILE = "agent_state.json"
@@ -12,11 +11,7 @@ def load_state():
         with open(STATE_FILE, "r") as f:
             return json.load(f)
     except:
-        return {
-            "previous_temperature": None,
-            "max_temperature": None,
-            "last_checked": None
-        }
+        return {"history": []}
 
 def save_state(state):
     with open(STATE_FILE, "w") as f:
@@ -29,27 +24,23 @@ def get_temperature():
 
 def main():
     state = load_state()
-    
+
     current_temp = get_temperature()
-    previous_temp = state["previous_temperature"]
-    max_temp = state["max_temperature"]
+    current_time = datetime.utcnow().isoformat()
 
     print(f"Current temperature: {current_temp}")
-    print(f"Previous temperature: {previous_temp}")
-    print(f"Max temperature: {max_temp}")
 
-    # Compare
-    if previous_temp is not None:
-        change = current_temp - previous_temp
-        print(f"Change since last check: {change}")
+    # Create new record
+    new_entry = {
+        "time": current_time,
+        "temperature": current_temp
+    }
 
-    if max_temp is None or current_temp > max_temp:
-        print("New maximum temperature!")
-        state["max_temperature"] = current_temp
+    # Append to history
+    state["history"].append(new_entry)
 
-    # Update memory
-    state["previous_temperature"] = current_temp
-    state["last_checked"] = datetime.utcnow().isoformat()
+    print(f"Added new entry: {new_entry}")
+    print(f"Total records: {len(state['history'])}")
 
     save_state(state)
 
