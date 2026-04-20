@@ -1,6 +1,13 @@
+import streamlit as st #For live data presentation
 import json
+import pandas as pd
 
-with open("agent_state.json", "r") as f: #Open history.json to read and call it 'f'
-    data = json.load(f) #load 'f' using JSON and call it data
+st.title("Camping Temperature Dashboard") #Give it a name
 
-print(data) #print data
+with open("agent_state.json", "r") as f:
+    data = json.load(f)
+
+df = pd.DataFrame(data["agent_state"])
+
+st.write("Raw data preview")
+st.dataframe(df)
