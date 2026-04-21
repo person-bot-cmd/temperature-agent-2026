@@ -7,7 +7,7 @@ st.title("Camping Temperature Dashboard") #Give it a name
 with open("agent_state.json", "r") as f:
     data = json.load(f)
 
-df = pd.DataFrame(data["histroy"])
+df = pd.DataFrame(data["history"])
 
 # Convert time column to datetime
 df["time"] = pd.to_datetime(df["time"])
