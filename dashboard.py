@@ -21,6 +21,8 @@ last_week = df[df["time"] >= latest_time - pd.Timedelta(days=7)]
 
 st.subheader("Temperature Over the Last 24 Hours")
 st.line_chart(last_24h.set_index("time")["temperature"])
+
+st.subheader("Temperature Over the Last 7 Days")
 st.line_chart(last_week.set_index("time")["temperature"])
 
 
