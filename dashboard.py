@@ -45,6 +45,7 @@ def make_temp_chart(data, title):
         "text": title,
         "x": 0.5,
         "xanchor": "center"
+         "font": {"size": 40}
     },
     xaxis_title="Time",
     yaxis_title="Temperature (°F)",
