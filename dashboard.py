@@ -41,7 +41,11 @@ def make_temp_chart(data, title):
     ))
 
     fig.update_layout(
-        title=title,
+    title=dict(
+        text=title,
+        x=0.5,      # centers the title
+        xanchor='center'
+    ),
         xaxis_title="Time",
         yaxis_title="Temperature (°F)",
         hovermode="x unified",
@@ -50,6 +54,8 @@ def make_temp_chart(data, title):
         margin=dict(l=40, r=40, t=70, b=40),
         showlegend=True
     )
+
+    
 
     fig.update_xaxes(
         tickformat="%b %d\n%I:%M %p"
