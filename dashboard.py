@@ -27,6 +27,21 @@ last_week = df[df["time"] >= latest_time - pd.Timedelta(days=7)]
 
 
 
+st.subheader("Temperature Over the Last 7 Days")
+
+fig = px.line(
+    last_week,
+    x="time",
+    y="temperature_F",
+    title="Temperature Trend (Last 7 Days)"
+)
+
+fig.update_traces(
+    hovertemplate="Time: %{x}<br>Temp: %{y}°F"
+)
+
+st.plotly_chart(fig)
+
 st.subheader("Temperature Over the Last 24 Hours")
 
 fig = px.line(
@@ -41,9 +56,8 @@ fig.update_traces(
 )
 
 st.plotly_chart(fig)
-
-st.subheader("Temperature Over the Last 7 Days")
-st.line_chart(last_week.set_index("time")["temperature_F"])
+#st.subheader("Temperature Over the Last 7 Days")
+#st.line_chart(last_week.set_index("time")["temperature_F"])
 
 
 # Find peak and lowest temperatures
