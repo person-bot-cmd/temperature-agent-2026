@@ -86,8 +86,9 @@ latest_time = df["time"].max()
 last_24h = df[df["time"] >= latest_time - pd.Timedelta(hours=24)]
 last_week = df[df["time"] >= latest_time - pd.Timedelta(days=7)]
 
-daily_fig = make_temp_chart(last_24h, "Daily Temperature Trend")
-weekly_fig = make_temp_chart(last_week, "Weekly Temperature Trend")
+weekly_fig = make_temp_chart(last_week, "Last 7 Days")
+daily_fig = make_temp_chart(last_24h, "Last 24 hours")
+
 
 col1, col2 = st.columns(2)
 
