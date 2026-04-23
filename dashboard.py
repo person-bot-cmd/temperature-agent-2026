@@ -58,8 +58,17 @@ def make_temp_chart(data, title):
     )
 
     return fig
+st.title("Camping Temperature Dashboard")
 
-st.title("Camping Temperature Dashboard") #Give it a name
+col1, col2 = st.columns(2)
+
+with col1:
+    st.subheader("Last 24 Hours")
+    st.plotly_chart(daily_fig, use_container_width=True)
+
+with col2:
+    st.subheader("Last 7 Days")
+    st.plotly_chart(weekly_fig, use_container_width=True)
 
 with open("agent_state.json", "r") as f:
     data = json.load(f)
