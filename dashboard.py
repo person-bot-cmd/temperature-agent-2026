@@ -41,19 +41,19 @@ def make_temp_chart(data, title):
     ))
 
     fig.update_layout(
-    title=dict(
-        text=title,
-        x=0.5,      # centers the title
-        xanchor='center'
-    ),
-        xaxis_title="Time",
-        yaxis_title="Temperature (°F)",
-        hovermode="x unified",
-        template="plotly_white",
-        height=500,
-        margin=dict(l=40, r=40, t=70, b=40),
-        showlegend=True
-    )
+    title={
+        "text": title,
+        "x": 0.5,
+        "xanchor": "center"
+    },
+    xaxis_title="Time",
+    yaxis_title="Temperature (°F)",
+    hovermode="x unified",
+    template="plotly_white",
+    height=500,
+    margin=dict(l=40, r=40, t=70, b=40),
+    showlegend=True
+)
 
     
 
