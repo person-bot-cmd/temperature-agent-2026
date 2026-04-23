@@ -76,5 +76,5 @@ st.write(f"Occurred at: {min_row['time'].values[0]}")
 #st.write("Last 24 hours of data")
 #st.dataframe(last_24h)
 
-st.write("Raw data preview")
-st.dataframe(df)
+#st.write("Raw data preview")
+#st.dataframe(df)
