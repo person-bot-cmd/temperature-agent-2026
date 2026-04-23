@@ -8,6 +8,7 @@ with open("agent_state.json", "r") as f:
     data = json.load(f)
 
 df = pd.DataFrame(data["history"])
+df["temperature_F"] = df["temperature"] * 9/5 + 32
 
 # Convert time column to datetime
 df["time"] = pd.to_datetime(df["time"])
