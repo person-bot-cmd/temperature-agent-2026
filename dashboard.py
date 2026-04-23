@@ -12,6 +12,7 @@ df["temperature_F"] = df["temperature"] * 9/5 + 32
 
 # Convert time column to datetime
 df["time"] = pd.to_datetime(df["time"])
+df["time"] = df["time"].dt.tz_localize("UTC").dt.tz_convert("America/Los_Angeles")
 
 # Find latest timestamp
 latest_time = df["time"].max()
