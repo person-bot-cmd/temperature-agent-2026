@@ -47,7 +47,7 @@ def make_temp_chart(data, title):
     xaxis_title="Time",
     yaxis_title="Temperature (°F)",
     hovermode="x unified",
-    template="plotly_white",
+    template="plotly_dark",
     height=500,
     margin=dict(l=40, r=40, t=70, b=40),
     showlegend=True
