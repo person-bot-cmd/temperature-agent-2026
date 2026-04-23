@@ -90,7 +90,7 @@ weekly_fig = make_temp_chart(last_week, "Last 7 Days")
 daily_fig = make_temp_chart(last_24h, "Last 24 hours")
 
 
-col1, col2 = st.columns(2)
+col2, col1 = st.columns(2)
 
 with col1:
     st.plotly_chart(daily_fig, use_container_width=True)
