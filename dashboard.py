@@ -73,8 +73,8 @@ st.write(f"Occurred at: {max_row['time'].values[0]}")
 st.write(f"Lowest temperature: {min_temp}")
 st.write(f"Occurred at: {min_row['time'].values[0]}")
 
-st.write("Last 24 hours of data")
-st.dataframe(last_24h)
+#st.write("Last 24 hours of data")
+#st.dataframe(last_24h)
 
 st.write("Raw data preview")
 st.dataframe(df)
