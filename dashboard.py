@@ -17,9 +17,12 @@ latest_time = df["time"].max()
 
 # Filter last 24 hours
 last_24h = df[df["time"] >= latest_time - pd.Timedelta(hours=24)]
+last_week = df[df["time"] >= latest_time - pd.Timedelta(days=7)]
 
 st.subheader("Temperature Over the Last 24 Hours")
 st.line_chart(last_24h.set_index("time")["temperature"])
+st.line_chart(last_week.set_index("time")["temperature"])
+
 
 # Find peak and lowest temperatures
 max_temp = last_24h["temperature"].max()
