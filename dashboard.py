@@ -28,7 +28,7 @@ def make_temp_chart(data, title):
         name="Highest",
         text=[f'High: {max_row["temperature_F"]:.1f}°F'],
         textposition="top center",
-        marker=dict(size=12, symbol="circle")
+        marker=dict(size=12, color = "red", symbol="circle")
     ))
 
     # Lowest point
@@ -39,7 +39,7 @@ def make_temp_chart(data, title):
         name="Lowest",
         text=[f'Low: {min_row["temperature_F"]:.1f}°F'],
         textposition="bottom center",
-        marker=dict(size=12, symbol="circle")
+        marker=dict(size=12, color = "blue", symbol="circle")
     ))
 
     fig.update_layout(
