@@ -73,7 +73,7 @@ latest_time = df["time"].max()
 # Filter last 24 hours
 last_24h = df[df["time"] >= latest_time - pd.Timedelta(hours=24)]
 last_week = df[df["time"] >= latest_time - pd.Timedelta(days=7)]
-
+'''
 st.subheader("Temperature Over the Last 24 Hours")
 
 fig = px.line(
@@ -105,7 +105,7 @@ fig.update_traces(
 )
 
 st.plotly_chart(fig)
-
+'''
 st.subheader("Last 24 Hours")
 daily_fig = make_temp_chart(last_24h, "Daily Temperature Trend")
 st.plotly_chart(daily_fig, use_container_width=True)
@@ -116,12 +116,12 @@ st.plotly_chart(weekly_fig, use_container_width=True)
 
 
 # Find peak and lowest temperatures
-#max_temp = last_24h["temperature"].max()
-#min_temp = last_24h["temperature"].min()
+max_temp = last_24h["temperature"].max()
+min_temp = last_24h["temperature"].min()
 
 # Find when they happened
-#max_row = last_24h[last_24h["temperature"] == max_temp]
-#min_row = last_24h[last_24h["temperature"] == min_temp]
+max_row = last_24h[last_24h["temperature"] == max_temp]
+min_row = last_24h[last_24h["temperature"] == min_temp]
 
 st.subheader("Key Insights (Last 24 Hours)")
 
