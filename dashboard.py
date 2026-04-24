@@ -78,7 +78,11 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-st.title("Camping Temperature Dashboard")
+#st.title("Camping Temperature Dashboard")
+st.markdown(
+    "<h1 style='text-align: center;'>Camping Temperature Dashboard</h1>",
+    unsafe_allow_html=True
+)
 
 with open("agent_state.json", "r") as f:
     data = json.load(f)
