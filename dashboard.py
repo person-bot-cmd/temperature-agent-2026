@@ -97,7 +97,7 @@ df["temperature_F"] = df["temperature"] * 9/5 + 32
 df["time"] = pd.to_datetime(df["time"])
 df["time"] = df["time"].dt.tz_localize("UTC").dt.tz_convert("America/Los_Angeles")
 
-display_df = last_24h[["time", "temperature_F"]].copy()
+display_df = df[["time", "temperature_F"]].copy()
 display_df["temperature_F"] = display_df["temperature_F"].round(1)
 display_df["temperature_F"] = display_df["temperature_F"].round(1)
 display_df.columns = ["Time", "Temp (°F)"]
