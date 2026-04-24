@@ -108,8 +108,8 @@ padding = 2
 
 shared_y_range = [y_min - padding, y_max + padding]
 
-weekly_fig = make_temp_chart(last_week, "Last 7 Days")
-daily_fig = make_temp_chart(last_24h, "Last 24 hours")
+daily_fig = make_temp_chart(last_24h, "Daily Temperature Trend", shared_y_range)
+weekly_fig = make_temp_chart(last_week, "Weekly Temperature Trend", shared_y_range)
 
 
 col1, col2 = st.columns(2)
