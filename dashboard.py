@@ -80,7 +80,7 @@ st.markdown("""
 
 #st.title("Camping Temperature Dashboard")
 st.markdown(
-    "<h1 style='text-align: center;'>Camping Temperature Dashboard</h1>",
+    "<h1 style='text-align: center; margin-bottom: 30px;'>Camping Temperature Dashboard</h1>",
     unsafe_allow_html=True
 )
 
