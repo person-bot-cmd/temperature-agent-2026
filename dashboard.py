@@ -47,6 +47,10 @@ def make_temp_chart(data, title, y_range=None):
         "xanchor": "center",
          "font": {"size": 30}
     },
+        yaxis=dict(
+    title="Temperature (°F)",
+    range=y_range
+),
     xaxis_title="Time",
     yaxis_title="Temperature (°F)",
     hovermode="x unified",
@@ -54,10 +58,6 @@ def make_temp_chart(data, title, y_range=None):
     height=500,
     margin=dict(l=40, r=40, t=70, b=40),
     showlegend=True
-        yaxis=dict(
-    title="Temperature (°F)",
-    range=y_range
-),
 )
 
     
