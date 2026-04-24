@@ -98,9 +98,11 @@ df["time"] = pd.to_datetime(df["time"])
 df["time"] = df["time"].dt.tz_localize("UTC").dt.tz_convert("America/Los_Angeles")
 
 display_df = df[["time", "temperature_F"]].copy()
-display_df["temperature_F"] = display_df["temperature_F"].round(1)
-display_df["temperature_F"] = display_df["temperature_F"].round(1)
-display_df.columns = ["Time", "Temp (°F)"]
+
+display_df["Time"] = display_df["time"].dt.strftime("%b %d, %I:%M %p")
+display_df["Temp (°F)"] = display_df["temperature_F"].round(1)
+
+display_df = display_df[["Time", "Temp (°F)"]]
 
 
 latest_time = df["time"].max()
@@ -126,7 +128,15 @@ with col1:
 with col2:
     st.plotly_chart(daily_fig, use_container_width=True)
 
-st.subheader("Last 24 Hours (Readable Table)")
-st.dataframe(display_df, use_container_width=True, height=300)
+html_table = "<table style='width:100%; text-align:center; border-collapse: collapse;'>"
+html_table += "<tr><th style='border-bottom: 1px solid white;'>Time</th><th style='border-bottom: 1px solid white;'>Temp (°F)</th></tr>"
+
+for _, row in display_df.iterrows():
+    html_table += f"<tr><td>{row['Time']}</td><td>{row['Temp (°F)']}</td></tr>"
+
+html_table += "</table>"
+
+st.markdown("### Last 24 Hours (Readable Table)")
+st.markdown(html_table, unsafe_allow_html=True)
 
 
