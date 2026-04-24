@@ -97,6 +97,12 @@ df["temperature_F"] = df["temperature"] * 9/5 + 32
 df["time"] = pd.to_datetime(df["time"])
 df["time"] = df["time"].dt.tz_localize("UTC").dt.tz_convert("America/Los_Angeles")
 
+display_df = last_24h[["time", "temperature_F"]].copy()
+display_df["temperature_F"] = display_df["temperature_F"].round(1)
+display_df["temperature_F"] = display_df["temperature_F"].round(1)
+display_df.columns = ["Time", "Temp (°F)"]
+
+
 latest_time = df["time"].max()
 last_24h = df[df["time"] >= latest_time - pd.Timedelta(hours=24)]
 last_week = df[df["time"] >= latest_time - pd.Timedelta(days=7)]
@@ -120,7 +126,7 @@ with col1:
 with col2:
     st.plotly_chart(daily_fig, use_container_width=True)
 
-st.subheader("Last 24 Hours Data")
-st.dataframe(last_24h, use_container_width=True)
+st.subheader("Last 24 Hours (Readable Table)")
+st.dataframe(display_df, use_container_width=True, height=300)
 
 
