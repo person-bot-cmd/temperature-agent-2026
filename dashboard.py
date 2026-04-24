@@ -5,7 +5,7 @@ import plotly.graph_objects as go
 
 st.set_page_config(layout="wide")
 
-def make_temp_chart(data, title):
+def make_temp_chart(data, title, y_range=None):
     max_row = data.loc[data["temperature_F"].idxmax()]
     min_row = data.loc[data["temperature_F"].idxmin()]
 
@@ -54,6 +54,10 @@ def make_temp_chart(data, title):
     height=500,
     margin=dict(l=40, r=40, t=70, b=40),
     showlegend=True
+        yaxis=dict(
+    title="Temperature (°F)",
+    range=y_range
+),
 )
 
     
@@ -96,6 +100,13 @@ df["time"] = df["time"].dt.tz_localize("UTC").dt.tz_convert("America/Los_Angeles
 latest_time = df["time"].max()
 last_24h = df[df["time"] >= latest_time - pd.Timedelta(hours=24)]
 last_week = df[df["time"] >= latest_time - pd.Timedelta(days=7)]
+
+y_min = last_week["temperature_F"].min()
+y_max = last_week["temperature_F"].max()
+
+padding = 2
+
+shared_y_range = [y_min - padding, y_max + padding]
 
 weekly_fig = make_temp_chart(last_week, "Last 7 Days")
 daily_fig = make_temp_chart(last_24h, "Last 24 hours")
